@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. B. Kavya Santhoshi — Power Electronics &amp; Renewable Energy Systems Researcher</title>
+<meta name="description" content="Academic homepage of Dr. B. Kavya Santhoshi — Assistant Professor, EEE, Godavari Global University. Power electronics, PV/EV systems, microgrids, AI for energy systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ECEFEA;
+    --paper-raised:#F5F7F2;
+    --ink:#1B2430;
+    --ink-soft:#4A5566;
+    --copper:#B7672E;
+    --copper-soft:#D98A52;
+    --teal:#2F6F6B;
+    --amber:#E0A458;
+    --line:#C9CCC0;
+    --line-soft:#DBDED3;
+    --granted:#2F6F6B;
+    --max:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber);color:var(--ink);}
+  a{color:var(--copper);}
+  a:hover{color:var(--teal);}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;color:var(--ink);margin:0;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.72rem;
+    color:var(--copper);
+    font-weight:600;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  /* skip link + focus */
+  .skip-link{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:999;}
+  .skip-link:focus{left:12px;top:12px;}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:3px;}
+
+  /* ============ NAV ============ */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(236,239,234,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;}
+  .nav-name{font-family:'Fraunces',serif;font-weight:600;font-size:1rem;color:var(--ink);text-decoration:none;}
+  .nav-links{display:flex;gap:22px;list-style:none;margin:0;padding:0;}
+  .nav-links a{
+    text-decoration:none;color:var(--ink-soft);font-size:0.86rem;font-weight:500;
+    border-bottom:2px solid transparent;padding-bottom:3px;transition:border-color .2s, color .2s;
+  }
+  .nav-links a:hover{color:var(--ink);border-color:var(--copper);}
+  .nav-toggle{display:none;}
+
+  /* ============ HERO ============ */
+  header.hero{padding:64px 0 40px;position:relative;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.35fr 0.65fr;gap:40px;align-items:center;}
+  .hero-photo-wrap{
+    justify-self:end;
+    width:168px;height:168px;border-radius:50%;
+    border:3px solid var(--copper);
+    padding:6px;
+    background:var(--paper-raised);
+  }
+  .hero-photo-wrap img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;}
+  h1.name{font-size:clamp(2.1rem,4.4vw,3.1rem);line-height:1.06;letter-spacing:-0.01em;}
+  .credentials{margin-top:10px;color:var(--ink-soft);font-size:1.02rem;}
+  .titles{margin-top:6px;font-family:'Fraunces',serif;font-style:italic;font-size:1.08rem;color:var(--teal);}
+  .id-row{display:flex;flex-wrap:wrap;gap:14px 22px;margin-top:22px;}
+  .id-row a{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;text-decoration:none;color:var(--ink-soft);border-bottom:1px dashed var(--line);padding-bottom:2px;}
+  .id-row a:hover{color:var(--copper);border-color:var(--copper);}
+  .hero-cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono',monospace;font-size:0.82rem;font-weight:600;
+    padding:11px 20px;border-radius:3px;text-decoration:none;letter-spacing:0.02em;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{background:var(--ink);color:var(--paper);}
+  .btn-primary:hover{color:var(--paper);transform:translateY(-1px);box-shadow:0 6px 14px rgba(27,36,48,0.25);}
+  .btn-ghost{border:1.5px solid var(--ink);color:var(--ink);}
+  .btn-ghost:hover{color:var(--ink);border-color:var(--copper);transform:translateY(-1px);}
+
+  /* schematic node diagram */
+  .schematic{margin-top:46px;}
+  .schematic svg{width:100%;height:auto;display:block;}
+  .node-label{font-family:'IBM Plex Mono',monospace;font-size:11.5px;fill:var(--ink-soft);}
+  .node-dot{fill:var(--paper);stroke:var(--copper);stroke-width:2;}
+  .trace{fill:none;stroke:var(--line);stroke-width:1.5;}
+  .trace-live{fill:none;stroke:var(--copper-soft);stroke-width:1.5;stroke-dasharray:6 5;}
+
+  /* quick stat strip */
+  .stat-strip{
+    margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .stat{padding:18px 6px;text-align:center;border-left:1px solid var(--line);}
+  .stat:first-child{border-left:none;}
+  .stat b{display:block;font-family:'Fraunces',serif;font-size:1.7rem;color:var(--ink);}
+  .stat span{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);}
+
+  /* ============ SECTIONS ============ */
+  section{padding:64px 0;}
+  section.alt{background:var(--paper-raised);}
+  .section-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px;}
+  .section-head .via{width:9px;height:9px;border-radius:50%;background:var(--copper);flex:none;}
+  .section-head h2{font-size:1.65rem;}
+  .section-head .trace-rule{flex:1;height:1px;background:var(--line);margin-left:10px;}
+  .lede{max-width:66ch;color:var(--ink-soft);}
+
+  blockquote{
+    font-family:'Fraunces',serif;font-style:italic;font-size:1.18rem;line-height:1.55;
+    color:var(--ink);border-left:3px solid var(--copper);padding-left:22px;margin:26px 0 0;
+  }
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* research focus cards */
+  .focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px;}
+  .focus-card{
+    background:var(--paper-raised);border:1px solid var(--line);border-radius:6px;
+    padding:22px;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  section.alt .focus-card{background:var(--paper);}
+  .focus-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(27,36,48,0.08);border-color:var(--copper-soft);}
+  .focus-card .fi{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--copper);letter-spacing:0.08em;}
+  .focus-card h3{font-size:1.08rem;margin-top:8px;}
+  .focus-card p{font-size:0.92rem;color:var(--ink-soft);margin-top:8px;}
+
+  /* timeline */
+  .timeline{position:relative;margin-top:10px;padding-left:26px;border-left:1.5px solid var(--line);}
+  .tl-item{position:relative;padding-bottom:34px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";position:absolute;left:-31px;top:4px;width:9px;height:9px;border-radius:50%;
+    background:var(--paper);border:2px solid var(--copper);
+  }
+  .tl-date{font-family:'IBM Plex Mono',monospace;font-size:0.76rem;color:var(--teal);font-weight:600;}
+  .tl-item h3{font-size:1.05rem;margin-top:4px;}
+  .tl-role{color:var(--ink-soft);font-size:0.9rem;font-style:italic;}
+  .tl-item p{margin-top:6px;font-size:0.92rem;color:var(--ink-soft);}
+
+  /* research record table */
+  .record-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:8px;}
+  .record-cell{background:var(--paper-raised);padding:16px 14px;}
+  section.alt .record-cell{background:var(--paper);}
+  .record-cell b{display:block;font-family:'Fraunces',serif;font-size:1.5rem;}
+  .record-cell span{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.03em;}
+
+  /* publication cards */
+  .pub{border-bottom:1px solid var(--line-soft);padding:18px 0;}
+  .pub:first-child{padding-top:0;}
+  .pub-badge{
+    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:600;
+    letter-spacing:0.04em;color:#fff;background:var(--teal);padding:2px 8px;border-radius:3px;margin-bottom:8px;
+  }
+  .pub h3{font-size:1.02rem;font-weight:600;font-family:'IBM Plex Sans',sans-serif;line-height:1.4;}
+  .pub .meta{font-size:0.86rem;color:var(--ink-soft);margin-top:4px;}
+  .pub a.doi{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;}
+
+  details{margin-top:20px;border-top:1px solid var(--line);}
+  summary{
+    cursor:pointer;padding:16px 2px;font-family:'IBM Plex Mono',monospace;font-size:0.82rem;
+    font-weight:600;color:var(--ink);list-style:none;display:flex;align-items:center;gap:10px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::before{content:"+";color:var(--copper);font-size:1.1rem;width:14px;}
+  details[open] summary::before{content:"–";}
+  .ledger{width:100%;border-collapse:collapse;font-size:0.86rem;margin-bottom:18px;}
+  .ledger th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);padding:8px 10px;border-bottom:1px solid var(--line);}
+  .ledger td{padding:9px 10px;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--ink-soft);}
+  .ledger tr:hover td{background:rgba(183,103,46,0.05);color:var(--ink);}
+  .ledger td.num{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;white-space:nowrap;color:var(--ink-soft);}
+  .pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:600;padding:1px 7px;border-radius:10px;}
+  .pill.granted{background:rgba(47,111,107,0.14);color:var(--teal);}
+  .pill.published{background:rgba(183,103,46,0.12);color:var(--copper);}
+
+  /* patent granted cards */
+  .patent-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px;}
+  .patent-card{background:var(--paper-raised);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:4px;padding:16px 18px;}
+  section.alt .patent-card{background:var(--paper);}
+  .patent-card .num{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--teal);}
+  .patent-card h3{font-size:0.94rem;margin-top:5px;line-height:1.4;}
+
+  /* awards */
+  .award-list{list-style:none;margin:8px 0 0;padding:0;}
+  .award-list li{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line-soft);}
+  .award-list li:first-child{padding-top:0;}
+  .award-list .ayear{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--teal);flex:none;width:64px;}
+
+  /* talks */
+  .talk-list{list-style:none;margin:8px 0 0;padding:0;}
+  .talk-list li{padding:14px 0;border-bottom:1px solid var(--line-soft);font-size:0.94rem;}
+  .talk-list li:first-child{padding-top:0;}
+  .talk-list b{font-weight:600;}
+  .talk-list .tvenue{color:var(--ink-soft);font-size:0.88rem;display:block;margin-top:2px;}
+
+  /* two col generic */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+
+  /* memberships */
+  .chip-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+  .chip{font-family:'IBM Plex Mono',monospace;font-size:0.76rem;border:1px solid var(--line);padding:7px 13px;border-radius:20px;color:var(--ink-soft);}
+
+  /* education table */
+  table.edu{width:100%;border-collapse:collapse;margin-top:8px;font-size:0.9rem;}
+  table.edu th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:0.68rem;text-transform:uppercase;color:var(--ink-soft);padding:8px 10px;border-bottom:1px solid var(--line);}
+  table.edu td{padding:11px 10px;border-bottom:1px solid var(--line-soft);}
+
+  /* contact / footer */
+  footer{padding:56px 0 40px;border-top:1px solid var(--line);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+  .contact-grid a.big-link{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--copper);}
+  .contact-grid a.big-link:hover{color:var(--copper);}
+  .contact-note{font-size:0.86rem;color:var(--ink-soft);margin-top:16px;max-width:42ch;}
+  .fine{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--ink-soft);margin-top:44px;padding-top:20px;border-top:1px solid var(--line-soft);}
+
+  @media (max-width:840px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-photo-wrap{justify-self:start;width:120px;height:120px;order:-1;}
+    .stat-strip{grid-template-columns:repeat(2,1fr);}
+    .stat:nth-child(3){border-left:none;}
+    .focus-grid{grid-template-columns:1fr;}
+    .record-grid{grid-template-columns:repeat(2,1fr);}
+    .patent-grid{grid-template-columns:1fr;}
+    .two-col{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav aria-label="Primary">
+  <div class="wrap">
+    <a class="nav-name" href="#top">B. Kavya Santhoshi</a>
+    <ul class="nav-links">
+      <li><a href="#focus">Research</a></li>
+      <li><a href="#career">Career</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#patents">Patents</a></li>
+      <li><a href="#service">Service</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Assistant Professor, EEE — Godavari Global University</p>
+        <h1 class="name">Dr. B. Kavya Santhoshi</h1>
+        <p class="credentials">M.E. &middot; MBA &middot; Ph.D. &middot; AICTE&#8209;QIP PG (AI &amp; Data Science) &middot; AICTE Industry Fellow &middot; Remote Pilot</p>
+        <p class="titles">Power electronics, PV/EV systems &amp; AI&#8209;driven grid control</p>
+        <div class="id-row">
+          <a href="http://orcid.org/0000-0002-5309-8158" target="_blank" rel="noopener">ORCID 0000&#8209;0002&#8209;5309&#8209;8158</a>
+          <a href="https://www.scopus.com/authid/detail.uri?authorId=56644743400" target="_blank" rel="noopener">Scopus 56644743400</a>
+          <a href="#contact">WOS AAX&#8209;8998&#8209;2021</a>
+          <a href="#contact">Vidwan ID 461456</a>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="mailto:kavyabe2010@gmail.com">Email me</a>
+          <a class="btn btn-ghost" href="#publications">View publications</a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <img id="hero-photo" alt="Portrait of Dr. B. Kavya Santhoshi" width="168" height="168">
+      </div>
+    </div>
+
+    <div class="schematic" aria-hidden="true">
+      <svg viewBox="0 0 1000 190" preserveAspectRatio="xMidYMid meet">
+        <!-- backbone -->
+        <path class="trace" d="M40,95 H960" />
+        <!-- 6 nodes -->
+        <g class="mono">
+          <!-- node template repeated -->
+          <path class="trace-live" d="M120,95 V40" />
+          <circle class="node-dot" cx="120" cy="30" r="7"/>
+          <text class="node-label" x="120" y="18" text-anchor="middle">POWER ELECTRONICS</text>
+
+          <path class="trace-live" d="M280,95 V150" />
+          <circle class="node-dot" cx="280" cy="160" r="7"/>
+          <text class="node-label" x="280" y="182" text-anchor="middle">SOLAR PV &amp; GRID</text>
+
+          <path class="trace-live" d="M440,95 V40" />
+          <circle class="node-dot" cx="440" cy="30" r="7"/>
+          <text class="node-label" x="440" y="18" text-anchor="middle">EV CHARGING</text>
+
+          <path class="trace-live" d="M600,95 V150" />
+          <circle class="node-dot" cx="600" cy="160" r="7"/>
+          <text class="node-label" x="600" y="182" text-anchor="middle">AI / ML CONTROL</text>
+
+          <path class="trace-live" d="M760,95 V40" />
+          <circle class="node-dot" cx="760" cy="30" r="7"/>
+          <text class="node-label" x="760" y="18" text-anchor="middle">MICROGRIDS</text>
+
+          <path class="trace-live" d="M900,95 V150" />
+          <circle class="node-dot" cx="900" cy="160" r="7"/>
+          <text class="node-label" x="900" y="182" text-anchor="middle">UAV SYSTEMS</text>
+        </g>
+        <circle cx="40" cy="95" r="3.5" fill="var(--copper)"/>
+        <circle cx="960" cy="95" r="3.5" fill="var(--copper)"/>
+      </svg>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat"><b>50+</b><span>Publications</span></div>
+      <div class="stat"><b>60</b><span>Patents filed &middot; 4 granted</span></div>
+      <div class="stat"><b>6</b><span>Textbooks authored</span></div>
+      <div class="stat"><b>5</b><span>Q1 SCIE journal papers</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head"><span class="via"></span><h2>About</h2><span class="trace-rule"></span></div>
+    <blockquote>To be the best mentor to my students and contribute towards the overall development of my institution, while constantly updating my skills to make a mark in the field of research and education.</blockquote>
+    <p class="lede" style="margin-top:22px;">
+      I am an Assistant Professor in the Department of Electrical &amp; Electronics Engineering at
+      Godavari Global University (erstwhile Godavari Institute of Engineering and Technology, Autonomous),
+      and an AICTE Industry Fellow at Garuda Aerospace Limited, where I work on tethered drone R&amp;D and
+      train Remote Pilots on small and medium class drones. My research sits at the intersection of power
+      electronic converter design, solar PV and EV grid integration, and AI/ML&#8209;based control for
+      microgrids and power quality — an intersection reflected in a filed patent portfolio of 60
+      inventions (4 granted across India and the UK), 50+ peer&#8209;reviewed publications, and six
+      authored textbooks. I received the Research Excellence Award at AMMEL 2026 (University of Malaya,
+      Malaysia) and the Faculty Excellence Award for Research and Publications from SNS Institutions in 2024.
+    </p>
+  </div>
+</section>
+
+<section class="alt" id="focus">
+  <div class="wrap">
+    <div class="section-head"><span class="via"></span><h2>Research focus</h2><span class="trace-rule"></span></div>
+    <p class="lede">Six threads that recur across my patents, journal papers, and conference work.</p>
+    <div class="focus-grid">
+      <div class="focus-card"><p class="fi">01 &middot; CONVERTERS</p><h3>Power electronic converters</h3><p>Self&#8209;lift Luo, SEPIC, Landsman, Cuk, Zeta, KY and Z&#8209;source converter topologies for renewable and EV interfacing.</p></div>
+      <div class="focus-card"><p class="fi">02 &middot; PV/GRID</p><h3>Solar PV &amp; grid integration</h3><p>MPPT algorithms, multilevel and quasi&#8209;Z&#8209;source inverters, and power quality improvement for grid&#8209;tied PV.</p></div>
+      <div class="focus-card"><p class="fi">03 &middot; EV</p><h3>EV charging infrastructure</h3><p>On&#8209;board and off&#8209;board chargers, wireless and fast&#8209;charging schemes, PV&#8209;fed charging stations.</p></div>
+      <div class="focus-card"><p class="fi">04 &middot; AI/ML</p><h3>AI for energy systems</h3><p>ANN, ANFIS, fuzzy&#8209;logic and RNN&#8209;based control; PSO/GWO/firefly optimization for MPPT and fault diagnosis.</p></div>
+      <div class="focus-card"><p class="fi">05 &middot; MICROGRIDS</p><h3>Microgrids &amp; power quality</h3><p>DFIG wind systems, D&#8209;STATCOM, DVR, UPQC, droop control and hybrid AC/DC microgrid design.</p></div>
+      <div class="focus-card"><p class="fi">06 &middot; UAV</p><h3>UAV &amp; remote sensing</h3><p>Tethered drone R&amp;D at Garuda Aerospace; embedded data&#8209;acquisition systems for unmanned aerial vehicles.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="career">
+  <div class="wrap">
+    <div class="section-head"><span class="via"></span><h2>Career history</h2><span class="trace-rule"></span></div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<section class="alt" id="record">
+  <div class="wrap">
+    <div class="section-head"><span class="via"></span><h2>Research record</h2><span class="trace-rule"></span></div>
+    <p class="lede">Cumulative output as of July 2026.</p>
+    <div class="record-grid" id="record-grid"></div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <div class="section-head"><span class="via"></span><h2>Publications</h2><span class="trace-rule"></span></div>
+    <p class="lede">Five Q1 SCIE journal papers, selected for relevance to reviewer expertise; full record below.</p>
+    <div id="selected-pubs" style="margin-top:8px;"></div>
+
+    <details id="det-intl-journals">
+      <summary>All international journal articles (<span id="cnt-intl-journals"></span>)</summary>
+      <table class="ledger"><thead><tr><th style="width:36px;">#</th><th>Citation</th><th style="width:110px;">Index</th></tr></thead><tbody id="tbl-intl-journals"></tbody></table>
+    </details>
+
+    <details id="det-nat-journals">
+      <summary>National journal articles (<span id="cnt-nat-journals"></span>)</summary>
+      <table class="ledger"><thead><tr><th style="width:36px;">#</th><th>Citation</th></tr></thead><tbody id="tbl-nat-journals"></tbody></table>
+    </details>
+
+    <details id="det-intl-conf">
+      <summary>International conference papers (<span id="cnt-intl-conf"></span>)</summary>
+      <table class="ledger"><thead><tr><th style="width:36px;">#</th><th>Citation</th></tr></thead><tbody id="tbl-intl-conf"></tbody></table>
+    </details>
+
+    <details id="det-nat-conf">
+      <summary>National conference papers (<span id="cnt-nat-conf"></span>)</summary>
+      <table class="ledger"><thead><tr><th style="width:36px;">#</th><th>Citation</th></tr></thead><tbody id="tbl-nat-conf"></tbody></table>
+    </details>
+
+    <details id="det-chapters">
+      <summary>Book chapters (<span id="cnt-chapters"></span>)</summary>
+      <table class="ledger"><thead><tr><th style="width:36px;">#</th><th>Citation</th></tr></thead><tbody id="tbl-chapters"></tbody></table>
+    </details>
+
+    <details id="det-books">
+      <summary>Authored textbooks (<span id="cnt-books"></span>)</summary>
+      <table class="ledger"><thead><tr><th style="width:36px;">#</th><th>Title &amp; publisher</th><th style="width:170px;">ISBN</th></tr></thead><tbody id="tbl-books"></tbody></table>
+    </details>
+  </div>
+</section>
+
+<section class="alt" id="patents">
+  <div class="wrap">
+    <div class="section-head"><span class="via"></span><h2>Patents</h2><span class="trace-rule"></span></div>
+    <p class="lede">Four granted patents (India &amp; UK) from a filed portfolio of 60.</p>
+    <div class="patent-grid" id="patent-granted"></div>
+    <details id="det-patents">
+      <summary>All filed patents (<span id="cnt-patents"></span>)</summary>
+      <table class="ledger"><thead><tr><th style="width:36px;">#</th><th style="width:120px;">Application no.</th><th>Title</th><th style="width:90px;">Status</th></tr></thead><tbody id="tbl-patents"></tbody></table>
+    </details>
+  </div>
+</section>
+
+<section id="service">
+  <div class="wrap">
+    <div class="section-head"><span class="via"></span><h2>Talks, service &amp; recognition</h2><span class="trace-rule"></span></div>
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:1.05rem;">Invited talks</h3>
+        <ul class="talk-list" id="talk-list"></ul>
+        <h3 style="font-size:1.05rem;margin-top:26px;">Session chair</h3>
+        <ul class="talk-list" id="chair-list"></ul>
+      </div>
+      <div>
+        <h3 style="font-size:1.05rem;">Awards</h3>
+        <ul class="award-list" id="award-list"></ul>
+        <h3 style="font-size:1.05rem;margin-top:26px;">Professional memberships</h3>
+        <div class="chip-row" id="membership-row"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="education">
+  <div class="wrap">
+    <div class="section-head"><span class="via"></span><h2>Education</h2><span class="trace-rule"></span></div>
+    <table class="edu">
+      <thead><tr><th>Course</th><th>Institution</th><th>University / Board</th><th>Year</th><th>Result</th></tr></thead>
+      <tbody id="edu-body"></tbody>
+    </table>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="section-head"><span class="via"></span><h2>Contact</h2><span class="trace-rule"></span></div>
+    <div class="contact-grid" style="margin-top:22px;">
+      <div>
+        <a class="big-link" href="mailto:kavyabe2010@gmail.com">kavyabe2010@gmail.com</a>
+        <p class="contact-note">Department of Electrical &amp; Electronics Engineering, Godavari Global University. For manuscript review invitations, editorial correspondence, or research collaboration.</p>
+      </div>
+      <div>
+        <p class="mono" style="font-size:0.86rem;">WOS ID &nbsp;AAX&#8209;8998&#8209;2021<br>Scopus ID &nbsp;56644743400<br>Vidwan ID &nbsp;461456<br>ORCID &nbsp;<a href="http://orcid.org/0000-0002-5309-8158" target="_blank" rel="noopener">0000&#8209;0002&#8209;5309&#8209;8158</a><br>Languages &nbsp;English, Tamil, Telugu, Hindi, French</p>
+      </div>
+    </div>
+    <p class="fine">Compiled by Dr. B. Kavya Santhoshi from her academic record, July 2026. Home address and date of birth are withheld from this public page as a matter of standard practice.</p>
+  </div>
+</footer>
+</main>
+
+<script>
+const PHOTO_B64 = "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";
+document.getElementById('hero-photo').src = "data:image/jpeg;base64," + PHOTO_B64;
+
+/* ---------------- DATA ---------------- */
+
+const career = [
+  {date:"Jan 2026 — present", role:"AICTE Fellow", org:"Garuda Aerospace Limited", note:"R&D on tethered drones; Remote Pilot Course Trainer for small and medium class drones."},
+  {date:"Nov 2019 — present", role:"Assistant Professor, EEE", org:"Godavari Global University (erstwhile Godavari Institute of Engineering and Technology, Autonomous)", note:"Project Coordinator, Placement &amp; Training in-charge, Time Table Coordinator, PG Coordinator, BOS Member, Conference Coordinator, NAAC Coordinator."},
+  {date:"Jun 2018 — Jun 2019", role:"Assistant Professor, EEE", org:"ISTS Women's Engineering College", note:"Training &amp; Placements, Diploma In-charge."},
+  {date:"Sep 2017 — Oct 2019 (part-time)", role:"English Trainer", org:"CS Institute", note:"Coached students preparing for competitive exams — grammar, vocabulary, test strategy."},
+  {date:"Jun 2015 — Mar 2017", role:"Assistant Professor, EEE (also MBA dept.)", org:"Vel Tech Multi Tech Engineering College, Chennai", note:"Institution Surveys Coordinator, Higher Education Coordinator, EEE Placement in-charge, NAAC Coordinator, Verbal Trainer."},
+  {date:"Jul 2010 — May 2013", role:"Senior Training Programmer", org:"Electro Tech Systems, Chennai", note:"Conducted workshops and training sessions for employees and clients across academic institutions."}
+];
+
+const record = [
+  ["60","Patents published"], ["4","Patents granted"], ["4","NPTEL / AICTE courses completed"],
+  ["6","Textbook publications"], ["10","Book chapter publications"], ["31","Papers — international journals"],
+  ["4","Papers — national journals"], ["26","Papers — international conferences"], ["6","National conferences attended"],
+  ["9","Funding proposals submitted"], ["3","Conferences organized"], ["26","FDPs attended"],
+  ["2","FDPs organized"], ["19","Webinars attended"], ["11","Workshops / seminars attended"],
+  ["4","Awards received"], ["6","Invited talks"], ["1","Session chair"]
+];
+
+const selectedPubs = [
+  {t:"Enhanced Re Boost-Luo with coupled inductors for efficient integration of PV systems in DC microgrids", j:"Electrical Engineering (Springer), 107, 527–542, 2025", doi:"https://doi.org/10.1007/s00202-024-02541-2"},
+  {t:"Sinusoidal pulse width modulation for a photovoltaic-based single-stage inverter", j:"Environmental Science and Pollution Research, 2022", doi:""},
+  {t:"Deep Learning for Fault Diagnostics in Bearings, Insulators, PV Panels, Power Lines, and Electric Vehicle Applications — The State-of-the-Art Approaches", j:"IEEE Access, 9, 41246–41260, 2021", doi:"https://doi.org/10.1109/ACCESS.2021.3064360"},
+  {t:"ANN-based dynamic control and energy management of inverter and battery in a grid-tied hybrid renewable power system fed through switched Z-source converter", j:"Electrical Engineering (Springer), 103, 2285–2301, 2021", doi:"https://doi.org/10.1007/s00202-021-01231-7"},
+  {t:"Critical Review of PV Grid-Tied Inverters", j:"Energies, 12, 1921, 2019", doi:"https://doi.org/10.3390/en12101921"}
+];
+
+const intlJournals = [
+"Singh, N.M.S.P., Faizal, A.A.M., Praynlin, E. et al. Enhanced Re Boost-Luo with coupled inductors for efficient integration of PV systems in DC microgrids. Electr Eng 107, 527–542 (2025).|SCIE Q1",
+"Bolisetti Kavya Santhoshi et al. Sinusoidal pulse width modulation for a photovoltaic-based single-stage inverter. Environmental Science and Pollution Research (2022).|SCIE Q1",
+"B. K. Santhoshi et al. Deep Learning for Fault Diagnostics in Bearings, Insulators, PV Panels, Power Lines, and EV Applications. IEEE Access, 9, 41246–41260 (2021).|SCIE Q1",
+"Santhoshi, B.K., Mohanasundaram, K., Kumar, L.A. ANN-based dynamic control and energy management of inverter and battery in a grid-tied hybrid renewable power system. Electr Eng 103, 2285–2301 (2021).|SCIE Q1",
+"Kavya Santhoshi, B. et al. Critical Review of PV Grid-Tied Inverters. Energies 12, 1921 (2019).|SCIE Q1",
+"B. Kavya Santhoshi et al. Performance of DFIG fed wind turbine under fault conditions. Materials Today: Proceedings (2021).|Scopus",
+"Kavya Santhoshi, B., Mohana Sundaram, K. Design and performance analysis of qzsi implemented in grid integrated PV system. Journal of Green Engineering 9, 312–331 (2019).|Scopus",
+"B. K. Santhoshi, S. Divya, M. S. Kumar. Selective harmonic elimination for a PV based Quasi-Z Source Inverter for drive systems. IEEE NCET NRES EM, 143–147 (2014).|—",
+"B. Kavya Santhoshi, K. A. S. Dead-Beat Control Based Active and Reactive Power Control for Applications of Single-Phase Electric Springs. Intl. J. Control and Automation 13(1s), 48–57 (2020).|Scopus",
+"D. Ravi Kishore et al. IOP Conf. Ser.: Earth Environ. Sci. 1375, 012025 (2024).|Scopus",
+"B. Kavya Santhoshi et al. IOP Conf. Ser.: Earth Environ. Sci. 1375, 012024 (2024).|Scopus",
+"P. Annapandi, D. Lakshmi, B. Kavya Santhoshi, P. Annapoorani. Lion swarm optimization for grid connected PV system with improved SEPIC. Intl. J. Applied Power Engineering 13(3), 603–615 (2024).|Scopus",
+"Santhoshi, B.K., Sundaram, K.M., Sivasubramanian, M., Akila, S. A Novel Multiport Bidirectional dual active bridge DC-DC Converter for Renewable Power Generation Systems. Indian Journal of Science and Technology, 9 (2016).|WOS",
+"M. Sai Viveka, B. Kavya Santhoshi, Ancelin Geo M R, S. Satish Kumar. Performance Characteristics of PV based grid connected seven level inverter. IJAER 10, 20867–20870 (2015).|—",
+"Kanikella Aruna Sri, B. Kavya Santhoshi. Fuzzy Logic Based Active and Reactive Power Control for Applications of Single-Phase Electric Springs. Intl. J. Analytical and Experimental Modal Analysis 12, 999–1007 (2020).|—",
+"Bellapukonda Sravani, B. Kavyasanthoshi, D. Ravi Kishore. PQ Theory Based Power Quality Improvement in Distribution Level with D-STATCOM. IJMTST 7, 199–205 (2021).|—",
+"K. Rajesh, B. Kavya Santhoshi et al. Simulation of ANN Based Hybrid Power Distribution System. IJMTST 6(3), 133–140 (2020).|—",
+"Koutha Harshitha, B. Kavya Santhoshi et al. An Efficient Constant Current Controller and ANN Controller for RES Network. IJMTST 6(3), 102–106 (2020).|—",
+"R. Vijaykesar, P. Rajeshkumar, A. Naresh, B. Kavya Santhoshi. Implementation of ANN on Load Frequency Control of Two Area Power System. IJMTST 7, 108–113 (2021).|—",
+"B. Kavya Santhoshi, M. Sasi Kumar. An improved energy stored q-ZSI connected with a Constant DC Link peak voltage Photovoltaic power system. Intl. J. Advanced and Innovative Research 3, 50–65 (2014).|—",
+"M. Vijaya Bhaskar, V. L. Deekshitha, T. Sai Bhargav, B. Kavya Santhoshi. PV fed Novel High Step up Soft Switching Interleaved DC-DC Boost Converter with Coupled Inductors. IJMTST 7, 31–37 (2021).|—",
+"Kanumuri Ajay Kumar Varma, B. Kavya Santhoshi. Design and Implementation of Intelligent MPPT with Multiple SEPIC Choppers for PV System. IJMTST 8, 199–204 (2022).|—",
+"Ravi Kishore Dondapati, Purusottam Vasistakanth, Kavya Santhoshi Bolisetti, Vendoti Suresh. ANFIS controlled bidirectional off board EV charger with reactive power compensation and reduced THD. AIP Conf. Proc. 3237(1), 040015 (2025).|—",
+"F. Jerald, Anitha Gopalan, V. Shanmugasundaram, Karthik S, B. Kavya Santhoshi, K. Mohana Sundaram. Enhancing Energy Efficiency in HVAC Systems through Intelligent Control Strategies. Advances in Nonlinear Variational Inequalities 28, 57–74 (2024).|—",
+"Ganga, M., Santhoshi, B.K., Kommula, B.N. et al. Triple-Stage interleaved zeta converter for PV-Powered EV charging with Bio-Inspired controller optimization. Appl Nanosci 15, 53 (2025).|—",
+"Design of Three-Phase Grid-Connected PV System with Z-Source Boost Converter and Neural Network Based Harmonic Elimination.|—",
+"Kavya Santhoshi B., Parvathi R.V.L.N.S., Tharpil H.G., Vamsi K.M., Appaji M. K. Metaheuristic Optimization of PI Control in Coupled Inductor SEPIC Converter for Photovoltaic Applications (2025).|—",
+"Dondapati Ravi Kishore, Bolisetty Kavya Santhoshi, Kunche Gowthami, Kosuri Sravani, Moyya Sundeep. Grey wolf optimization based photovoltaic power generation forecasting for smart grids. AIP Conf. Proc. 3342(1), 030026 (2025).|—",
+"Ravi Kishore Dondapati, Kavya Santhoshi Bolisetty, Gowthami Kunche, Rayudu Venkatalakshmi Nagasatyaparvathi, J. Laxmi Prasad. A new active fault tolerant control system with cloud for DC motor. AIP Conf. Proc. 3342(1), 060014 (2025).|—",
+"Dondapati Ravi Kishore, Bolisetty Kavya, Kollati Siva Prasad, Kanikella Aruna Sri, Venkata Rambabu Gottipati. Random forest algorithm based fault detection for dual circuit untransposed transmission line. AIP Conf. Proc. 3342(1), 060013 (2025).|—",
+"Sravani, K., Kavya, S., Jagadeesh, P., Yamuna, R., Lakshman, R. D. Hybrid ARBS-Net Framework for Accurate Energy Forecasting in Smart Grid-Driven Electric Mobility Environments. Problems of the Regional Energetics 1, 84–97 (2026).|—"
+];
+
+const natJournals = [
+"Santhoshi, B.K., Sundaram, K.M., Sivasubramanian, M., Akila, S. A Novel Multiport Bidirectional dual active bridge DC-DC Converter for Renewable Power Generation Systems. Indian Journal of Science and Technology, 9 (2016).",
+"B. Kavya Santhoshi, K. Mohana Sundaram. Hybrid Converter with Simultaneous AC and DC Output for Nano-Grid Applications with Residential System. Journal of Engineering and Applied Sciences 13, 3289–3293 (2018).",
+"B. Kavya Santhoshi, A. Sudharsan, M. Sai Viveka, M. Sasi Kumar. Performance characteristics of a Solar operated Quasi Z Source Inverter under different load conditions. Journal of Chemical and Pharmaceutical Sciences, Special Issue 10, 11–15 (2015).",
+"A. Sudharsan, B. Kavya Santhoshi, B. Balabharathi. A Novel PFC Bridgeless Buck–Boost Converter-Fed BLDC Multi-Motor Drive With Nine-Switch Inverter. Journal of Chemical and Pharmaceutical Sciences, Special Issue 10, 21–26 (2015)."
+];
+
+const intlConf = [
+"Implementation of RBFNN MPPT for a grid connected PV system. ICIET-2022, JNTUH, Sep 15–17, 2022.",
+"Multiport Bidirectional converter for solar fed Hybrid Electric vehicle. ICIET-2022, JNTUH, Sep 15–17, 2022.",
+"Landsman converter fed electric vehicle with improved power factor. ICPST-2022, May 21–22, 2022.",
+"Implementation of a novel 21 level inverter for a PV fed system with advanced boost capability. ICPST-2022, May 21–22, 2022.",
+"A cost effective PV based standalone system for power outage in rural areas. ICIEEE, Guru Nanak Institute of Technology, Hyderabad.",
+"Reduced distortion in load using a Q-ZSI with energy storage connected to a constant DC link peak voltage PV system. TEQIP International Conference on Energy and Environmental Engineering, Anna University, Tiruchirapalli.",
+"A Novel MPPT Approach for grid tied wind energy system. ICACRS, Dec 13–15, 2022, Mount Zion College of Engineering and Technology.",
+"An examination of the DC-DC converter for electric vehicles based on the SVM. Emerging Trends in Smart Grid, Renewable Energy and EV Technologies, KL University, Dec 27–29, 2022.",
+"ANN based Grid interconnection of Solar PV system with multifunctional grid-interactive converter. KL University, Dec 27–29, 2022.",
+"Artificial Neural Network-based D-FACTS for Improving Microgrid Power Quality. KL University, Dec 27–29, 2022.",
+"Minimising Torque Ripple for Switched Reluctance Motor using Instantaneous Torque Control Theory. ISSETA 2023, NIT Meghalaya, Feb 24–25, 2023.",
+"D. Ravi Kishore, B. Kavya Santhoshi, K. Sravani, K. Maruthi. A Novel MPPT Approach for a Grid Tied Wind Energy System. ICACRS 2022, Pudukkottai, pp. 77–81, doi:10.1109/ICACRS55517.2022.10029191.",
+"B. K. Santhoshi et al. Type-2 Fuzzy Logic Algorithm Based High Gain Improved Luo Converter for EV Applications. ICCPCT 2023, Kollam, pp. 1722–1729, doi:10.1109/ICCPCT58313.2023.10245756.",
+"K. S. Kavin, P. S. Karuvelam, B. K. Santhoshi et al. Review of Maximum Power Point Tracking Based Novel Converters Used in EV Application. ICCPCT 2023, Kollam, pp. 1225–1229, doi:10.1109/ICCPCT58313.2023.10245855.",
+"B. K. Santhoshi et al. Improved Z-Source DC-DC Converter for PMBLDC Based EV. ICEMCE 2023, Madurai, doi:10.1109/ICEMCE57940.2023.10433958.",
+"D. Ravi Kishore et al. IOP Conf. Ser.: Earth Environ. Sci. 1375, 012025 (2024).",
+"B. Kavya Santhoshi et al. IOP Conf. Ser.: Earth Environ. Sci. 1375, 012024 (2024).",
+"K. S. B. et al. Solar Fed Nine Level Quadruple Boost Inverter with Fuzzy Controller. ISTEMS 2024, Dehradun, doi:10.1109/ISTEMS60181.2024.10560219.",
+"D. R. Kishore, B. Kavya Santhoshi et al. Design of a 13-Level PV Grid-Tied Multilevel Inverter for Power Quality Improvement. ICRISST 2024, Bengaluru, doi:10.1109/ICRISST59181.2024.10921829.",
+"K. S. B. et al. PSO Optimized Improved PFC Converter for Grid Tied EV Charging Station with Multisource Inverter. ICRISST 2024, Bengaluru, doi:10.1109/ICRISST59181.2024.10921757.",
+"K. B. et al. Smart Control and Reduced Switch Based Switched Capacitor Twenty Nine Level Inverter for PV Applications. ICRISST 2024, Bengaluru, doi:10.1109/ICRISST59181.2024.10921827.",
+"K. S. B. et al. High Gain KY Converter For Grid Tied Clean Energy PV System Using Cascaded Neuro Fuzzy Logic MPPT Algorithm. ICRISST 2024, Bengaluru, doi:10.1109/ICRISST59181.2024.10921792.",
+"K. S. B. et al. Recurrent Neural Network Based Fault Identification System For PV System Interfaced Three Phase Multimachine Grid System. ICRISST 2024, Bengaluru, doi:10.1109/ICRISST59181.2024.10921914.",
+"Ravi Kishore Dondapati et al. ANFIS controlled bidirectional off board EV charger with reactive power compensation and reduced THD. AIP Conf. Proc. 3237(1), 040015 (2025).",
+"B. K. Santhoshi, D. R. Kishore. Solar-Powered Nine-Level Quadruple Boost Inverter With Fuzzy Logic Control. ASPCC 2024, Bhubaneswar, doi:10.1109/ASPCC62191.2024.10881556.",
+"C. Ramya, B. K. Santhoshi et al. Concrete Compressive Strength Estimation through the Application of Machine Learning Techniques. ICERECT 2025, Mandya, doi:10.1109/ICERECT65215.2025.11377842.",
+"M. Kaveri, B. K. Santhoshi, D. R. Kishore. An ANN-Based Droop Control Strategy for Efficient Power Management and Power Quality Enhancement in DC Hybrid Microgrids. ICEESI 2026, Raigarh, doi:10.1109/ICEESI68020.2026.11582985.",
+"P. Vasistakanth, B. K. Santhoshi, D. R. K. D. An Efficient Single-Input Multi-Output Forward Converter for EV Charging Applications. ICEESI 2026, Raigarh, doi:10.1109/ICEESI68020.2026.11582973."
+];
+
+const natConf = [
+"Selective harmonic elimination for a PV based Quasi-Z Source Inverter for drive systems. IEEE NCET NRES EM, 2014, pp. 143–147, doi:10.1109/NCETNRESEM.2014.7088756.",
+"An improved energy stored q-ZSI connected with a Constant DC Link peak voltage Photovoltaic power system. INSA-sponsored National Conference on Power Electronics Applications in Renewable Energy, Vivekananda College of Engineering for Women, Tiruchengode.",
+"Selective Harmonic Elimination for a PV based Quasi-Z Source Inverter for Drive systems. IEEE National Conference on Emerging Trends in New and Renewable Energy Sources and Energy Management, Aarupadai Veedu Institute of Technology, Chennai.",
+"Performance characteristics for PV based seven level inverter. National Conference on Emerging Technologies in Electrical Engineering, Valliammai Engineering College, Chennai.",
+"Attended National Conference on 'Agni – Energy Security for Atmanirbar Bharat', organized by Vijnana Bharati, Power Foundation of India and SPA Vijayawada, Dec 19, 2022.",
+"A Review on Latest advancements in power conversion technologies for electron guns. VEDA-2023, Rajahmundry, Andhra Pradesh."
+];
+
+const chapters = [
+"Kavya Santhoshi B., Mohana Sundaram K. A Cost-Effective PV-Based Single-Stage Conversion System for Power Backup. Innovations in Electrical and Electronics Engineering, LNEE vol. 626, Springer, 2020. doi:10.1007/978-981-15-2256-7_50.",
+"Kavya Santhoshi B., Mohana Sundaram K., Chandrika V. S. Battery monitoring system and SOC enhancement analysis using artificial intelligence technique. Handbook of Research on Battery Management Systems and Routing Problems in Electric Vehicle.",
+"Santhoshi, B.K., Naveen, N., Adieswar, K., Chand, P.G. Minimising Torque Ripple for Switched Reluctance Motor Using Instantaneous Torque Control Theory. Sustainable Energy and Technological Advancements, Springer, 2023. doi:10.1007/978-981-99-4175-9_37.",
+"Kavya Santhoshi B., Mohana Sundaram K., Bapayya Naidu K. Design and Analysis of a Hybrid Renewable Energy System (HRES) With a Z-Source Converter for Reliable Grid Integration. AI Approaches to Smart and Sustainable Power Systems. doi:10.4018/979-8-3693-1586-6.",
+"B. Kavya Santhoshi, K. Mohana Sundaram, K. Bapayya Naidu. Advancements in fast charging systems for electric vehicles. Handbook on New Paradigms in Smart Charging for E-Mobility, Elsevier, 2025, pp. 159–194. doi:10.1016/B978-0-323-95201-9.00005-6.",
+"K. Mohana Sundaram, B. Kavya Santhoshi. Challenges in Charging of Batteries for Urban Air Mobility. Urban Air Mobility: Intelligent, Safe and Sustainable Systems for Future Transportation, River Publishers, 2024. doi:10.1201/9781003339953.",
+"B. Kavya Santhoshi, Bapayya Naidu Kommula, M. D. Vimalapriya, R. Karthikeyan, P. Roshith. AI-Optimized High-Performance Alloys for Aerospace and Biomedical Applications. Taylor &amp; Francis – CRC Press. doi:10.1201/9781003651772.",
+"Kommula, B.N., Kavya Santhoshi, B. et al. High Gain DC-DC Cuk Converter with Optimized Control for BLDC Motor-Based EV Propulsion. Power Engineering and Intelligent Systems, LNEE vol. 1459, Springer, 2026. doi:10.1007/978-981-96-9716-8_30.",
+"Kavya Santhoshi, B., Bindu, A., Gayathri, A.R. et al. Sustainable Clean Transportation for PV-Based EV Charging Using Bidirectional Cuk Converter. Power Engineering and Intelligent Systems, LNEE vol. 1459, Springer, 2026. doi:10.1007/978-981-96-9716-8_34.",
+"K Vijay Kumar, D Ravi Kishore, B Kavya Santhoshi, V Suresh. Modelling and Analysis of Renewable Energy Integration and Electric Vehicle Impact on Microgrid Performance. Sustainable Developments in Computer Engineering, Green Technology and Smart Systems, Vol. 2, CRC Press. doi:10.1201/9781003743774."
+];
+
+const books = [
+["Basics of Embedded Systems","VSRD Academic Publishing","978-93-86258-19-9"],
+["Embedded Systems","GCS Publishers, India","978-93-94304-82-6"],
+["Network Analysis &amp; Synthesis","Deccan International Academic Publishers, India","978-93-95191-12-8"],
+["Switchgear and Protection","GCS Publishers","978-81-96176-92-1"],
+["Power Electronics","Deccan International Academic Publishers, India","978-81-96169-01-5"],
+["HVDC Power Transmission Systems","Deccan International Publishers","978-81-964993-9-6"]
+];
+
+const patentsGranted = [
+["493562-001","Smart EV Charging Load Balancing and Power Distribution Device","Indian Patent, granted 11 Jun 2026"],
+["473590-001","Solar Powered Portable Energy Storage Device","Indian Patent, granted 11 Dec 2025"],
+["6496314","EV Charging Power Management Device","UK Patent, granted 16 Jan 2026"],
+["6511254","Intelligent Hybrid Microgrid Control Device","UK Patent, granted 17 Mar 2026"]
+];
+
+const patentsAll = [
+["493562-001","Smart EV Charging Load Balancing and Power Distribution Device","Granted"],
+["473590-001","Solar Powered Portable Energy Storage Device","Granted"],
+["6496314","EV Charging Power Management Device","Granted"],
+["6511254","Intelligent Hybrid Microgrid Control Device","Granted"],
+["202241050438","An embedded system for data acquisition provided with an unmanned aerial vehicle","Published"],
+["202241050139","Influence of the interconnection of wind turbines types I,II,III and IV on the parameters of the hosting capacity of distribution systems","Published"],
+["20221048349","Human Resource Recommendation Algorithm Based on Machine Learning","Published"],
+["202341009623A","ANN-based filters to improve the power quality of Grid Connected solar photovoltaic system","Published"],
+["202341009621A","A Single-Stage Control Strategy with Energy Management for PV/Battery Hybrid Systems","Published"],
+["202341009630A","EV charging station with PV and battery based on a multiport converter","Published"],
+["202341009626A","Modernization of 31 Level Distribution Network with Lower DC Voltage Sources","Published"],
+["202341009627A","Power quality improvement in distribution system with dynamic voltage restorer with energy storage integration","Published"],
+["202341009633A","Energy Management with PV Integrated Battery Energy Storage System using ANN Technique","Published"],
+["202341009628A","A Power Management Strategy for Photovoltaic-Based Microgrids Employing PSO","Published"],
+["202341009636A","Active Power control of Photovoltaic Systems to Support Grid frequency","Published"],
+["202341009631A","Bridgeless and independent Zeta Luo converter based electric vehicle charger","Published"],
+["202341009629A","High Step Up Transformerless DC-DC Converter Designed for Use in Applications Involving Renewable Energy","Published"],
+["202341009625A","Improved power quality using d-q theory-based three-phase unified power flow controller","Published"],
+["202341007827A","Solar powered robotic vehicle for heavy metal ions detection in water employing machine vision","Published"],
+["202141049447A","Agri-tech farming revolution for using PLC solar water, and fertilizer's pump with new altered-nozzle","Published"],
+["202341037413A","ANN based grid interconnection of solar PV system with multifunctional grid-interactive converter","Published"],
+["202341037415A","Grey wolf optimization aided MPPT algorithm with SEPIC converter for grid integrated PV system","Published"],
+["202341037419A","An examination of the DC-DC converter for electric vehicles based on the SVM","Published"],
+["202341037420A","Microgrid design for EV fast charging station using interleaved DC-DC converter","Published"],
+["202341037421A","Z-source converter with ultra gain for transformer-less fuel cell integrated single phase grid","Published"],
+["202341037424A","Modeling and controlling of ac/dc hybrid microgrid","Published"],
+["202341037425A","Dynamic programming-based energy management strategy optimization for PV system hybrid electric","Published"],
+["202341037428A","Artificial neural network-based D-FACTS for improving microgrid power quality","Published"],
+["202341037449A","ANN based bridgeless landsman converter design for electric vehicle power factor correction","Published"],
+["202341037452A","Developing an RBFNN maximum power point tracking algorithm for a three-phase landsman PV-grid","Published"],
+["202341037453A","Active and reactive power regulation utilizing an ANN controller for a PV fed trans quasi-z source","Published"],
+["202341037458A","Implementation of ANFIS controller to improve hybrid system reliability","Published"],
+["202441010162A","Integrated boost-Luo DC-DC converter for fuel cell interfaced multimode hybrid electric vehicles","Published"],
+["202441010164A","Back to back converter fed wind energy integrated smart PV assisted self-lift Luo converter for microgrid","Published"],
+["202441010165A","PSO Optimized improved converter for grid tied EV charging station with multisource inverter","Published"],
+["202441010167A","Fuzzy MPPT controlled landsman converter for grid tied PMBLDC based water pumping system","Published"],
+["202441010169A","Bridgeless landsman converter with hybrid control technique for power factor correction in EV applications","Published"],
+["202441010177A","Single phase UPQC system for harmonic reduction using optimized PI controller","Published"],
+["202441010178A","Recurrent neural network based fault identification system for PV system interfaced three phase multimachine grid","Published"],
+["202441010180A","Solar fed nine level quadruple boost inverter with fuzzy controller","Published"],
+["202441010187A","High gain KY converter for grid tied clean energy PV system using cascaded Neuro fuzzy logic MPPT","Published"],
+["202441010218A","Firefly optimized interleaved SEPIC converter for EV charging applications","Published"],
+["202441010219A","PFC controlled active PWM rectifier for wireless EV charger applications with interleaved LLC synchronous rectifier","Published"],
+["202441010222A","Bi-directional power flow control for three phase grid tied converters in EV charging applications","Published"],
+["202441010223A","Cascaded fuzzy logic controller for voltage sag/swell mitigation in DVR based power quality improvement","Published"],
+["202441010224A","Probabilistic neural network-based battery energy management system for grid-tied HRES system for EV","Published"],
+["202441010226A","System for power quality mitigation issues and unbalanced loads in grid system with novel inverter","Published"],
+["202441010228A","Improvement of power quality in three phase system using Adaline based multilevel inverter with improved control","Published"],
+["202441010229A","Power quality improvement with D-STATCOM using combined LCL-comb filter and optimized PI tuned classifier","Published"],
+["202441010231A","13-level PV grid-tied multilevel inverter for power quality improvement","Published"],
+["202441010232A","Smart control and reduced switch based switched capacitor twenty nine level inverter for PV applications","Published"],
+["202441010233A","Intelligent DC charging system for electric vehicles using three phase grid system and ANN controller","Published"],
+["202441010234A","Zeta boost converter for grid tied PV fed EV charging with an improved GWO optimized controller","Published"],
+["202441010238A","Neuro fuzzy logic algorithm based WECS-PMSG interfaced water pumping system along with battery-energy","Published"],
+["202441010240A","Equal current sharing between parallel connected second order and interleaved boost converter in microgrid","Published"],
+["202441010241A","Novel artificial neural network based droop control for hybrid energy storage systems in DC microgrid","Published"],
+["202441010242A","Power quality improvement in switching quasi improved SEPIC converter and voltage source inverter","Published"],
+["202441010245A","Improved power quality in DFIG based wind energy conversion system using whale optimization technique","Published"],
+["202441010248A","Improved INC MPPT controlled self lift Luo converter for grid tied PV system under partial shading conditions","Published"],
+["202441010250A","Near unity power factor correction Vienna rectifier for plug-in type three phase EV charging station","Published"],
+["202441010252A","Single input multi output forward converter for EV charging application","Published"],
+["202441017106A","High-performance controlled PWM rectifier with isolation transformer for shipping applications","Published"],
+["202441037354A","Investigations in PV based Quasi-Z source inverter fed electrical system","Published"],
+["202441010203A","Fuzzy controlled five level modular multilevel converter for grid tied PV system","Published"]
+];
+
+const invitedTalks = [
+{title:"Energy management in microgrid", venue:"International Conference on AI and Sustainable Development Goals, Chendur Research Foundation, 27–28 Sep 2025"},
+{title:"AI Tools for Research", venue:"One-week FDP on Artificial Intelligence in Multidisciplinary Research, 15–21 Aug 2025 (session delivered 18 Dec 2025)"},
+{title:"Research Article Writing (resource person)", venue:"Xavier Institute for Research and Development (XIRD), 11–13 Jan 2026"},
+{title:"Recent trends in development of Tethered drones", venue:"AMMEL 2026, University of Malaya, Malaysia, 5 Jun 2026"},
+{title:"AI Powered Research and Education: Tools, Applications and Best Practices", venue:"FDP on AI for all, Loyola Institute of Advanced Multidisciplinary Studies, 19 Jun 2026"},
+{title:"Intelligent solar EV charging systems for sustainable transportation", venue:"5-Day National FDP on EV Technology &amp; Support Systems, Godavari College of Engineering, Jalgaon"}
+];
+
+const chairRoles = [
+{title:"Session Chair &amp; Subject Matter Expert", venue:"2nd International Conference on Modern Trends in Engineering, Science, Management and Technology (MESMT–2026), Tirunelveli Dhakshina Mara Nadar Sangam College"}
+];
+
+const awards = [
+{year:"2026", text:"Research Excellence Award, AMMEL 2026, University of Malaya, Malaysia"},
+{year:"2026", text:"AICTE Industry Fellowship, ₹9,00,000"},
+{year:"2024", text:"Faculty Excellence Award for Excellence in Research and Publications, SNS Institutions, Coimbatore"},
+{year:"2024", text:"AICTE Fellowship, ₹40,000, Quality Improvement Programme"},
+{year:"—", text:"Anna University Rank Holder — 39th Rank in Tamil Nadu"},
+{year:"—", text:"Meritorious cash award, ₹75,000, Saveetha Engineering College"},
+{year:"—", text:"Certified Best Student, B.E.; Department Topper (III &amp; Final year EEE); College Topper, Final year project"},
+{year:"—", text:"YouTube Silver Button holder"}
+];
+
+const memberships = ["IAENG — International Association of Engineers","IFERP — Institute for Educational Research and Publication","IGEN — Institution of Green Engineers","WRU — World Research Union"];
+
+const education = [
+["Ph.D","Anna University","Anna University","2022","8.5 CGPA"],
+["M.E. (Power Electronics &amp; Drives)","Jeppiaar Engineering College","Anna University","2015","8.48 CGPA"],
+["MBA (HRM)","Alagappa University","Alagappa University","2013","73%"],
+["B.E. (EEE)","Saveetha Engineering College","Anna University","2010","80%"],
+["XII","Krishnaswamy MHSS","State Board","2006","86.33%"],
+["X","Krishnaswamy MHSS","Matriculation","2004","88.7%"]
+];
+
+/* ---------------- RENDER ---------------- */
+
+function el(html){const t=document.createElement('template');t.innerHTML=html.trim();return t.content.firstElementChild;}
+
+// timeline
+const tl = document.getElementById('timeline');
+career.forEach(c=>{
+  tl.appendChild(el(`<div class="tl-item">
+    <p class="tl-date mono">${c.date}</p>
+    <h3>${c.org}</h3>
+    <p class="tl-role">${c.role}</p>
+    <p>${c.note}</p>
+  </div>`));
+});
+
+// record grid
+const rg = document.getElementById('record-grid');
+record.forEach(r=>{
+  rg.appendChild(el(`<div class="record-cell"><b>${r[0]}</b><span>${r[1]}</span></div>`));
+});
+
+// selected publications
+const sp = document.getElementById('selected-pubs');
+selectedPubs.forEach(p=>{
+  sp.appendChild(el(`<div class="pub">
+    <span class="pub-badge">SCIE Q1</span>
+    <h3>${p.t}</h3>
+    <p class="meta">${p.j}</p>
+    ${p.doi ? `<a class="doi" href="${p.doi}" target="_blank" rel="noopener">${p.doi}</a>` : ''}
+  </div>`));
+});
+
+function fillTable(bodyId, countId, arr, hasIndex){
+  const body = document.getElementById(bodyId);
+  document.getElementById(countId).textContent = arr.length;
+  arr.forEach((row,i)=>{
+    let citation, idx;
+    if(typeof row === 'string' && hasIndex){
+      const parts = row.split('|'); citation = parts[0]; idx = parts[1];
+      body.appendChild(el(`<tr><td class="num">${i+1}</td><td>${citation}</td><td>${idx && idx !== '—' ? '<span class="pill granted">'+idx+'</span>' : '<span class="mono" style="font-size:0.72rem;color:var(--ink-soft);">—</span>'}</td></tr>`));
+    } else {
+      body.appendChild(el(`<tr><td class="num">${i+1}</td><td>${row}</td></tr>`));
+    }
+  });
+}
+fillTable('tbl-intl-journals','cnt-intl-journals',intlJournals,true);
+fillTable('tbl-nat-journals','cnt-nat-journals',natJournals,false);
+fillTable('tbl-intl-conf','cnt-intl-conf',intlConf,false);
+fillTable('tbl-nat-conf','cnt-nat-conf',natConf,false);
+fillTable('tbl-chapters','cnt-chapters',chapters,false);
+
+const tbBooks = document.getElementById('tbl-books');
+document.getElementById('cnt-books').textContent = books.length;
+books.forEach((b,i)=>{
+  tbBooks.appendChild(el(`<tr><td class="num">${i+1}</td><td>${b[0]}, <span style="color:var(--ink-soft);">${b[1]}</span></td><td class="mono" style="font-size:0.76rem;">${b[2]}</td></tr>`));
+});
+
+// patents granted cards
+const pg = document.getElementById('patent-granted');
+patentsGranted.forEach(p=>{
+  pg.appendChild(el(`<div class="patent-card"><p class="num">${p[0]} &middot; ${p[2]}</p><h3>${p[1]}</h3></div>`));
+});
+
+// patents full table
+const tbPatents = document.getElementById('tbl-patents');
+document.getElementById('cnt-patents').textContent = patentsAll.length;
+patentsAll.forEach((p,i)=>{
+  const pillClass = p[2]==='Granted' ? 'granted' : 'published';
+  tbPatents.appendChild(el(`<tr><td class="num">${i+1}</td><td class="mono" style="font-size:0.76rem;">${p[0]}</td><td>${p[1]}</td><td><span class="pill ${pillClass}">${p[2]}</span></td></tr>`));
+});
+
+// invited talks
+const tlist = document.getElementById('talk-list');
+invitedTalks.forEach(t=>{
+  tlist.appendChild(el(`<li><b>${t.title}</b><span class="tvenue">${t.venue}</span></li>`));
+});
+const clist = document.getElementById('chair-list');
+chairRoles.forEach(t=>{
+  clist.appendChild(el(`<li><b>${t.title}</b><span class="tvenue">${t.venue}</span></li>`));
+});
+
+// awards
+const alist = document.getElementById('award-list');
+awards.forEach(a=>{
+  alist.appendChild(el(`<li><span class="ayear mono">${a.year}</span><span>${a.text}</span></li>`));
+});
+
+// memberships
+const mrow = document.getElementById('membership-row');
+memberships.forEach(m=>{
+  mrow.appendChild(el(`<span class="chip">${m}</span>`));
+});
+
+// education
+const ebody = document.getElementById('edu-body');
+education.forEach(e=>{
+  ebody.appendChild(el(`<tr><td>${e[0]}</td><td>${e[1]}</td><td>${e[2]}</td><td>${e[3]}</td><td>${e[4]}</td></tr>`));
+});
+
+// scroll reveal
+const revealTargets = document.querySelectorAll('section, header.hero');
+revealTargets.forEach(s=>s.classList.add('reveal'));
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:0.08});
+revealTargets.forEach(s=>io.observe(s));
+document.querySelector('header.hero').classList.add('in');
+</script>
+</body>
+</html>
